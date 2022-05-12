@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 
 import SearchBar from '../components/SearchBar'
 
-
 const SearchScreen: React.FC = () => {
     const [term, setTerm] = useState('');
 

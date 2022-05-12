@@ -3,12 +3,13 @@ import {
   TextInput,
   View } from 'react-native';
 import React from 'react';
+
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 const SearchBar = ({
   term,
   onTermChange
-  }: {term: string | undefined, onTermChange: (term: string | undefined) => void}) => {
+  }: {term: string, onTermChange: (term: string) => void}) => {
 
   return (
     <View style={styles.backgroundStyle}>
