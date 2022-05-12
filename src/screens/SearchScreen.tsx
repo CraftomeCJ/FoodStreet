@@ -7,13 +7,22 @@ import React from 'react';
 
 import SearchBar from '../components/SearchBar'
 
-
 const SearchScreen: React.FC = () => {
 
     return (
       <View>
-        <SearchBar />
-        <Text>Search Screen</Text>
+
+        <SearchBar
+        term={term}
+        onTermChange={(newTerm: React.SetStateAction<string>) => setTerm(newTerm)}
+        onTermSubmit={() => console.log('term was submitted')}
+        />
+        <Text>
+          Search Screen
+          </Text>
+        <Text>
+          {term}
+          </Text>
       </View>
     );
   };
