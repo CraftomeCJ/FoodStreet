@@ -13,7 +13,7 @@ function MyStack() {
       <Stack.Screen
       name="Search"
       component={SearchScreen}
-      options={{ title: 'Food Street' }}/>
+      options={{ title: 'Food Street Search' }}/>
     </Stack.Navigator>
     </NavigationContainer>
   );
