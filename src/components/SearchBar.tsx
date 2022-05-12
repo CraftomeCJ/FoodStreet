@@ -5,22 +5,14 @@ import {
 import React from 'react';
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-const SearchBar = ({
-  term,
-  onTermChange
-  }: {term: string | undefined, onTermChange: (term: string | undefined) => void}) => {
+const SearchBar = () => {
 
   return (
     <View style={styles.backgroundStyle}>
       <Icon name="search" style={styles.iconStyle} />
 
       <TextInput
-        autoCapitalize="none"
-        autoCorrect={false}
-        style={styles.inputStyle}
         placeholder="Search"
-        value={term}
-        onChangeText={newTerm => onTermChange(newTerm)}
       />
     </View>
   );
