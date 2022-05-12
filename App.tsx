@@ -1,22 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import SearchScreen from './src/screens/SearchScreen'
 
-export default function App() {
-  const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
+const Stack = createNativeStackNavigator();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
-    );
-  }
+function MyStack() {
+  return (
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Search" component={SearchScreen} />
+    </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
+
+export default MyStack;
