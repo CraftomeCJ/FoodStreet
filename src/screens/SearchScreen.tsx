@@ -17,8 +17,8 @@ const SearchScreen: React.FC = () => {
         try {
     const response = await yelp.get('/search', {
       params: {
-        limit: 30,
-        location: 'singapore'
+        limit: 50,
+        location: 'san jose'
       }
     });
     setResults(response.data.businesses);
