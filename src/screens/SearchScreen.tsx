@@ -3,48 +3,52 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import SearchBar from '../components/SearchBar'
 import yelp from '../api/yelp';
 
 const SearchScreen: React.FC = () => {
 
-    const [term, setTerm] = useState<string>('curry');
+    const [term, setTerm] = useState<string>('');
     const [results, setResults] = useState<any[]>([]);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
-    const searchApi = async (searchTerm: string) => {
-      try {
-        const response = await yelp.get('/search', {
-          params: {
-            limit: 50,
-            term: searchTerm,
-            location: 'singapore'
-          }
-        });
-        setResults(response.data.businesses);
-            } catch (e) {
-              setErrorMessage('Oops!!Something went wrong');
-            }
-      };
+      const searchApi = async (searchTerm: string) => {
 
-      return (
-        <View>
-          <SearchBar
-          term={term}
-          onTermChange={setTerm}
-          //step 12c
-          onTermSubmit={() => searchApi(term)}
-          />
+        try {
+    const response = await yelp.get('/search', {
+      params: {
+        limit: 30,
+        term: searchTerm,
+        location: 'singapore'
+      }
+    });
 
-    {errorMessage ? <Text>{errorMessage}</Text> : null}
+    setResults(response.data.businesses);
+        } catch (e) {
+          setErrorMessage('Oops!!Something went wrong');
+        }
+  };
 
-          <Text>We have found {results.length} results.</Text>
-        </View>
-      );
-    };
+  useEffect(() => {
+    searchApi('paste');
+  }, []);
+
+    return (
+      <View>
+        <SearchBar
+        term={term}
+        onTermChange={setTerm}
+        onTermSubmit={() => searchApi(term)}
+        />
+
+  {errorMessage ? <Text>{errorMessage}</Text> : null}
+
+        <Text>We have found {results.length} results for {term}</Text>
+      </View>
+    );
+  };
 
 export default SearchScreen;
 
