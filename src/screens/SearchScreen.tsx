@@ -3,29 +3,48 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-import React from 'react';
+
+import React, { useState } from 'react';
 
 import SearchBar from '../components/SearchBar'
+import yelp from '../api/yelp';
 
 const SearchScreen: React.FC = () => {
 
-    return (
-      <View>
+    const [term, setTerm] = useState<string>('curry');
+    const [results, setResults] = useState<any[]>([]);
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
-        <SearchBar
-        term={term}
-        onTermChange={(newTerm: React.SetStateAction<string>) => setTerm(newTerm)}
-        onTermSubmit={() => console.log('term was submitted')}
-        />
-        <Text>
-          Search Screen
-          </Text>
-        <Text>
-          {term}
-          </Text>
-      </View>
-    );
-  };
+    const searchApi = async (searchTerm: string) => {
+      try {
+        const response = await yelp.get('/search', {
+          params: {
+            limit: 50,
+            term: searchTerm,
+            location: 'singapore'
+          }
+        });
+        setResults(response.data.businesses);
+            } catch (e) {
+              setErrorMessage('Oops!!Something went wrong');
+            }
+      };
+
+      return (
+        <View>
+          <SearchBar
+          term={term}
+          onTermChange={setTerm}
+          //step 12c
+          onTermSubmit={() => searchApi(term)}
+          />
+
+    {errorMessage ? <Text>{errorMessage}</Text> : null}
+
+          <Text>We have found {results.length} results.</Text>
+        </View>
+      );
+    };
 
 export default SearchScreen;
 
