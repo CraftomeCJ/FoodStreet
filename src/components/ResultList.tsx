@@ -6,10 +6,11 @@ import {
 import React from 'react'
 
 
-const ResultList = ( {title}: {title: string} ) => {
+const ResultList = ( {title, results}: {title: string, results: string} ) => {
   return (
     <View>
       <Text style={styles.title}>{ title }</Text>
+      <Text>Results: {results.length}</Text>
     </View>
   )
 }

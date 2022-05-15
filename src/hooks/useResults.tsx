@@ -8,7 +8,7 @@ const [errorMessage, setErrorMessage] = useState('');
 
 const searchApi: any = async (searchTerm: string): Promise<void> => {
 // to check error use console.log
-console.log('Hi there!!');
+// console.log('Hi there!!');
 
 
    try {

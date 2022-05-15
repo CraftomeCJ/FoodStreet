@@ -14,6 +14,13 @@ const SearchScreen: React.FC = () => {
     const [term, setTerm] = useState<string>('');
     const [searchApi, results, errorMessage] = useResults();
 
+    const filterResultByPrice = (price: string) => {
+      // price === '$' || price === '$$' || price === '$$$'
+      return results.filter((result: { price: string; }) => {
+        return result.price === price;
+        });
+    };
+
     return (
       <View>
         <SearchBar
@@ -25,12 +32,14 @@ const SearchScreen: React.FC = () => {
   {errorMessage ? <Text>{errorMessage}</Text> : null}
 
         <Text>We have found {results.length} results for {term}</Text>
-        <ResultList title = 'Cost Effective'/>
-        <ResultList title = 'Bit Pricier'/>
-        <ResultList title = 'Big Spender' />
+
+        <ResultList results={filterResultByPrice('$')} title="Cost Effective" />
+        <ResultList results={filterResultByPrice('$$')} title="Bit Pricier" />
+        <ResultList results={filterResultByPrice('$$$')} title="Big Spender" />
       </View>
     );
   };
+
 
 export default SearchScreen;
 
