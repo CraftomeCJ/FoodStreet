@@ -6,13 +6,13 @@ import {
 import React, { useState } from 'react';
 
 import SearchBar from '../components/SearchBar'
-import useResults from "../hooks/useResults"
+import useResults from '../hooks/useResults'
+import ResultList from '../components/ResultList'
 
 const SearchScreen: React.FC = () => {
 
     const [term, setTerm] = useState<string>('');
     const [searchApi, results, errorMessage] = useResults();
-
 
     return (
       <View>
@@ -25,6 +25,9 @@ const SearchScreen: React.FC = () => {
   {errorMessage ? <Text>{errorMessage}</Text> : null}
 
         <Text>We have found {results.length} results for {term}</Text>
+        <ResultList title = 'Cost Effective'/>
+        <ResultList title = 'Bit Pricier'/>
+        <ResultList title = 'Big Spender' />
       </View>
     );
   };
