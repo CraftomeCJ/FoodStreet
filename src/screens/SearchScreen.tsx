@@ -1,7 +1,8 @@
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  ScrollView
 } from 'react-native';
 import React, { useState } from 'react';
 
@@ -22,7 +23,8 @@ const SearchScreen: React.FC = () => {
     };
 
     return (
-      <View>
+      // <View style={{flex: 1}}>
+      <>
         <SearchBar
         term={term}
         onTermChange={setTerm}
@@ -31,12 +33,13 @@ const SearchScreen: React.FC = () => {
 
   {errorMessage ? <Text>{errorMessage}</Text> : null}
 
-        <Text>We have found {results.length} results for {term}</Text>
-
+        <ScrollView>
         <ResultList results={filterResultByPrice('$')} title="Cost Effective" />
         <ResultList results={filterResultByPrice('$$')} title="Bit Pricier" />
         <ResultList results={filterResultByPrice('$$$')} title="Big Spender" />
-      </View>
+</ScrollView>
+</>
+// </View>
     );
   };
 

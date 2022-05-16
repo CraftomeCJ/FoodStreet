@@ -11,7 +11,7 @@ const ResultsDetail = ({ result }: any) => {
   // console.log(result);
 
   return (
-    <View>
+    <View style={styles.container}>
 <Image
 style={styles.image}
 source={{ uri: result.image_url ? result.image_url : null }}
@@ -31,10 +31,14 @@ style={styles.name}>
 export default ResultsDetail
 
 const styles = StyleSheet.create({
+  container: {
+    marginLeft: 15
+  },
   image: {
     width: 250,
     height: 120,
-    borderRadius: 4
+    borderRadius: 4,
+    marginBottom: 5
   },
   name: {
     fontWeight: 'bold',
