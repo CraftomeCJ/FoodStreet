@@ -5,9 +5,9 @@ import {
   FlatList
 } from 'react-native'
 import React from 'react'
+import ResultsDetail from './ResultsDetail'
 
-
-const ResultList = ( {title, results}: {title: string, results: undefined} ) => {
+const ResultList = ( {title, results}: {title: string, results: any} ) => {
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
@@ -16,7 +16,7 @@ const ResultList = ( {title, results}: {title: string, results: undefined} ) => 
         data={results}
         keyExtractor={result => result.id}
         renderItem={({ item }) => {
-          return <Text>{item.name}</Text>;
+          return <ResultsDetail result={item} />;
         }}
       />
     </View>
