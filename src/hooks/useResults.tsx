@@ -6,7 +6,7 @@ export default () => {
   const [results, setResults] = useState<{ id: string; name: string }[]>([]);
 const [errorMessage, setErrorMessage] = useState('');
 
-const searchApi: any = async (searchTerm: string): Promise<void> => {
+const searchApi = async (searchTerm: string): Promise<string | void> => {
 // to check error use console.log
 // console.log('Hi there!!');
 
