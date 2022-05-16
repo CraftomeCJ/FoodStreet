@@ -10,7 +10,7 @@ import SearchBar from '../components/SearchBar'
 import useResults from '../hooks/useResults'
 import ResultList from '../components/ResultList'
 
-const SearchScreen: React.FC = () => {
+const SearchScreen: React.FC = ({ navigation }: any) => {
 
     const [term, setTerm] = useState<string>('');
     const [searchApi, results, errorMessage] = useResults();
@@ -34,9 +34,26 @@ const SearchScreen: React.FC = () => {
   {errorMessage ? <Text>{errorMessage}</Text> : null}
 
         <ScrollView>
-        <ResultList results={filterResultByPrice('$')} title="Cost Effective" />
-        <ResultList results={filterResultByPrice('$$')} title="Bit Pricier" />
-        <ResultList results={filterResultByPrice('$$$')} title="Big Spender" />
+
+        <ResultList
+        results={filterResultByPrice('$')}
+        title="Cost Effective"
+        navigation={navigation}
+        />
+
+        <ResultList
+        results={filterResultByPrice('$$')}
+        title="Bit Pricier"
+        navigation={navigation}
+        />
+
+        <ResultList
+        results={filterResultByPrice('$$$')}
+        title="Big Spender"
+        navigation={navigation}
+        />
+
+
 </ScrollView>
 </>
 // </View>

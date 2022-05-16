@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SearchScreen from './src/screens/SearchScreen'
+import ResultsShowScreen from './src/screens/ResultsShowScreen'
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,11 @@ function MyStack() {
       name="Search"
       component={SearchScreen}
       options={{ title: 'Food Street Search' }}/>
+
+<Stack.Screen
+      name="Results"
+      component={ResultsShowScreen}
+      options={{ title: 'Welcome to Food Street' }}/>
     </Stack.Navigator>
     </NavigationContainer>
   );
