@@ -5,7 +5,12 @@ import {
   StyleSheet
   } from 'react-native';
 
-const ResultsShowScreen = () => {
+const ResultsShowScreen = ({ route, navigation }) => {
+
+  const {id} = route.params;
+
+  console.log(id);
+
   return (
     <View>
       <Text>Welcome to Search Results Screen</Text>
