@@ -15,6 +15,10 @@ const ResultList = ( {title, results}: {title: string, results: any} ) => {
 
 const navigation = useNavigation();
 
+if (!results.length) {
+  return null;
+}
+
   return (
     <View style={styles.container}>
 
