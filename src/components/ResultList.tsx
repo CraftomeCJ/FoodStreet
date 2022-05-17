@@ -6,7 +6,9 @@ import {
   TouchableOpacity
 } from 'react-native'
 import React from 'react'
+
 import ResultsDetail from './ResultsDetail'
+
 
 const ResultList = ( {title, results, navigation}: {title: string, results: any, navigation: any} ) => {
   return (
