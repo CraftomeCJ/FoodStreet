@@ -33,8 +33,7 @@ const SearchScreen: React.FC = () => {
 
   {errorMessage ? <Text>{errorMessage}</Text> : null}
 
-        <ScrollView>
-
+<ScrollView>
         <ResultList
         results={filterResultByPrice('$')}
         title="Cost Effective"
@@ -49,8 +48,6 @@ const SearchScreen: React.FC = () => {
         results={filterResultByPrice('$$$')}
         title="Big Spender"
         />
-
-
 </ScrollView>
 </>
 // </View>

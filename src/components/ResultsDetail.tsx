@@ -6,7 +6,6 @@ import {
   } from 'react-native'
 import React from 'react'
 
-// step 19d receive 'result' Props which is an object
 const ResultsDetail = ({ result }: any) => {
   // console.log(result);
 
